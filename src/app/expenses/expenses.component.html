@@ -1,0 +1,6 @@
+<p>expenses works!</p>
+
+@for (expense of data; track expense.expenseId){
+    <p> {{ expense.expenseDescription || "No Available Description" }} : {{expense.expenseAmount}}</p>
+   
+}
