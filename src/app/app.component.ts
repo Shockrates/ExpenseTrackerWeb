@@ -2,11 +2,12 @@ import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ExpensesComponent } from './expenses/expenses.component';
 import { AuthService } from './service/auth.service';
+import { ModalComponent } from './shared/components/modal/modal.component';
 
 @Component({
   selector: 'app-root',
   standalone:true,
-  imports: [RouterOutlet, ExpensesComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -16,10 +17,10 @@ export class AppComponent {
   authService = inject(AuthService);
 
   constructor(){
-    this.authService.login({
-        userEmail:"Tester@example.com",
-        userPassword:"test1234"
-    }).subscribe((resp)=> console.log(resp))
+    // this.authService.login({
+    //     userEmail:"Tester@example.com",
+    //     userPassword:"test1234"
+    // }).subscribe((resp)=> console.log(resp))
     
   }
 }

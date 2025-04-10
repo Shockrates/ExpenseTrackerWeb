@@ -1,6 +1,9 @@
-<p>expenses works!</p>
+<div class="col-md-12">
+    <p>expenses works!</p>
 
-@for (expense of data; track expense.expenseId){
-    <p> {{ expense.expenseDescription || "No Available Description" }} : {{expense.expenseAmount}}</p>
-   
-}
+    @for (expense of data; track expense.expenseId){
+        <p> {{ expense.expenseDescription || "No Available Description" }} : {{expense.expenseAmount}}</p>
+    
+    }
+</div>
+
