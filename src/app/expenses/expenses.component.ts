@@ -21,7 +21,7 @@ export class ExpensesComponent implements OnInit{
   private getAllExpenses(){
     this.http.get<any>('/api/expenses').subscribe({
       next: (data: any) => {
-        console.log(data);
+        //console.log(data);
         this.data = data.data;
       }, error: (err) => console.log(err)
     });

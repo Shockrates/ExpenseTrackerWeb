@@ -15,12 +15,20 @@ export class AppComponent {
   title = 'ExpenseTrackerWeb';
 
   authService = inject(AuthService);
+  user: any;
 
   constructor(){
+    this.user = this.authService.getDecodedToken();
+    console.log(this.user);
+    
     // this.authService.login({
     //     userEmail:"Tester@example.com",
     //     userPassword:"test1234"
     // }).subscribe((resp)=> console.log(resp))
     
+  }
+
+  onLogout(): void {
+    this.authService.logout();
   }
 }
