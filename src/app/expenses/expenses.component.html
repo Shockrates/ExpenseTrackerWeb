@@ -20,7 +20,7 @@
       <tbody>
         @for (expense of data; track expense.expenseId; let idx = $index){
             <tr>
-                <th scope="row"> {{ idx +1}}</th>
+                <td scope="row"> {{ idx +1}}</td>
                 <td>{{ expense.expenseDescription || "No Available Description" }}</td>
                 <td>{{expense.expenseAmount}}</td>
                 <td>{{expense.category.name}}</td>

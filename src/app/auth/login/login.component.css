@@ -11,9 +11,10 @@ img {
 :host {
     height: 100vh;
     display: flex;
-    /* //align-items: center; */
+    /* align-items: center;  */
     justify-content: center;
-}
+} 
+
 
 .login-card {
     display: flex;

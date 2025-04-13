@@ -21,10 +21,15 @@ export class AppComponent {
     this.user = this.authService.getDecodedToken();
     console.log(this.user);
     
-    // this.authService.login({
-    //     userEmail:"Tester@example.com",
-    //     userPassword:"test1234"
-    // }).subscribe((resp)=> console.log(resp))
+    this.authService.login({
+        userEmail:"Tester@example.com",
+        userPassword:"test1234"
+    }).subscribe((resp)=> {
+      //console.log(resp);
+      this.authService.getCurrentAuthUser().subscribe((r) =>{
+        console.log(r);
+      })
+    })
     
   }
 
