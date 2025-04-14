@@ -27,7 +27,7 @@ export class AppComponent {
     }).subscribe((resp)=> {
       //console.log(resp);
       this.authService.getCurrentAuthUser().subscribe((r) =>{
-        console.log(r);
+        //console.log(r);
       })
     })
     

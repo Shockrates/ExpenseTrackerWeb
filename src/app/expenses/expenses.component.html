@@ -1,11 +1,8 @@
 <div class="col-md-12">
     <p>expenses works!</p>
 
-    <!-- @for (expense of data; track expense.expenseId){
-        <p> {{ expense.expenseDescription || "No Available Description" }} : {{expense.expenseAmount}}</p>
-    
-    } -->
-</div>
+
+
 
 <table class="table table-dark table-striped">
     <thead>
@@ -31,8 +28,8 @@
       
       </tbody>
 </table>
-
-<app-pagination></app-pagination>
+</div>
+<app-pagination [totalItems]="data.length" [itemsPerPage]="3" [currentPage]="3" (onClick)="onClickPage($event)"></app-pagination>
 
 
 

@@ -41,7 +41,7 @@ export class AuthService {
   }
 
   private storeJwtToken(jwt: string): void {
-    console.log("token:"+jwt);
+    //console.log("token:"+jwt);
     localStorage.setItem(this.JWT_TOKEN,jwt);
   }
 
@@ -79,8 +79,7 @@ export class AuthService {
   }
 
   getCurrentAuthUser(): Observable<any>{
-    console.log(this.loggedId);
-    
+    // console.log(this.loggedId);
     return this.http.get('api/users/'+ this.loggedId)
   }
 

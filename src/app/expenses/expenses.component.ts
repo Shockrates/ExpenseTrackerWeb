@@ -10,13 +10,18 @@ import { PaginationComponent } from './pagination/pagination.component';
   styleUrl: './expenses.component.css'
 })
 export class ExpensesComponent implements OnInit{
+onClickPage($event: number) {
+throw new Error('Method not implemented.');
+}
+
+  private http = inject(HttpClient);
+  public data: Array<any> = [];
 
   ngOnInit(): void {
     this.getAllExpenses()
   }
 
-  private http = inject(HttpClient);
-  public data: Array<any> = [];
+
 
   private getAllExpenses(){
     this.http.get<any>('/api/expenses').subscribe({
