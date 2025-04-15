@@ -1,0 +1,50 @@
+.table-item {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 12px 16px;
+  border: 1px solid #555;
+  border-radius: 8px;
+  /* background-color: transparent; */
+  color: white;
+
+  margin-bottom: 16px; /* spacing between items */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* optional soft shadow */
+}
+
+.cell {
+  flex: 1;
+  min-width: 120px;
+  padding: 4px 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cell.id {
+  flex: 0 0 80px;
+}
+
+.cell.amount {
+  flex: 0 0 100px;
+  text-align: right;
+}
+
+.cell.description {
+  flex: 2;
+}
+
+.cell.category {
+  flex: 1;
+  text-align: center;
+}
+
+.cell.date {
+  flex: 0 0 140px;
+  text-align: right;
+}
+
+.table-item.even {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+

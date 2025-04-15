@@ -1,0 +1,44 @@
+<section class="table-section text-white">
+    <!-- Header for table section -->
+    <div class="table-section-header border-bottom">
+        <div class="table-section-header-content">
+            Table Header / Actions
+        </div>
+    </div>
+    <div class="table-section-body">
+        @for (expense of expenses(); track expense.expenseId; let idx = $index){
+            <div class="table-items-container">
+                <app-expense-item [expense]="expense" [idx]="idx+1"></app-expense-item>
+            </div>
+           
+        }
+    </div>
+      
+</section>
+<!-- 
+<table class="table table-dark table-striped">
+    <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Description</th>
+          <th scope="col">Ammount</th>
+          <th scope="col">Category</th>
+          <th scope="col">Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (expense of expenses(); track expense.expenseId; let idx = $index){
+            <tr>
+                <td scope="row"> {{ idx +1}}</td>
+                <td>{{ expense.expenseDescription || "No Available Description" }}</td>
+                <td>{{expense.expenseAmount}}</td>
+                <td>{{expense.category.name}}</td>
+                <td>{{expense.expenseDate}}</td>
+              </tr>  
+        
+        }
+      
+      </tbody>
+</table> -->
+
+<app-pagination [totalItems]="expenses().length" [itemsPerPage]="3" [currentPage]="2" (onClick)="onClickPage($event)"></app-pagination>

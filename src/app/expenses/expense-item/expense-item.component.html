@@ -1,0 +1,8 @@
+<div class="table-item" [class.even]="idx() % 2 === 0">
+    <div class="cell id">{{ idx() }}</div>
+    <div class="cell amount">${{ expense()?.expenseAmount | number:'1.2-2' }}</div>
+    <div class="cell description">{{ expense()?.expenseDescription || "No Available Description" }}</div>
+    <div class="cell category">{{ expense()?.category.name }}</div>
+    <div class="cell date">{{ expense()?.expenseDate | date:'mediumDate' }}</div>
+  </div>
+  

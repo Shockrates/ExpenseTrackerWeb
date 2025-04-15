@@ -1,0 +1,23 @@
+.table-section {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 0 !important;
+    margin-top: 20px;
+    color: white;
+  }
+  
+  /* Stretch border line edge-to-edge */
+.table-section-header {
+    border-bottom: 1px solid #888;
+    padding: 16px;
+    color: white;
+  }
+
+  .table-section-body {
+    padding: 16px;
+    color: white;
+  }
+  .table-section-header-content {
+    font-weight: bold;
+  }
+

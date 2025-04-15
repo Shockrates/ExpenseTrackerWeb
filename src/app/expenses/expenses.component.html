@@ -1,35 +1,8 @@
 <div class="col-md-12">
     <p>expenses works!</p>
-
-
-
-
-<table class="table table-dark table-striped">
-    <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Description</th>
-          <th scope="col">Ammount</th>
-          <th scope="col">Category</th>
-          <th scope="col">Date</th>
-        </tr>
-      </thead>
-      <tbody>
-        @for (expense of data; track expense.expenseId; let idx = $index){
-            <tr>
-                <td scope="row"> {{ idx +1}}</td>
-                <td>{{ expense.expenseDescription || "No Available Description" }}</td>
-                <td>{{expense.expenseAmount}}</td>
-                <td>{{expense.category.name}}</td>
-                <td>{{expense.expenseDate}}</td>
-              </tr>  
-        
-        }
-      
-      </tbody>
-</table>
 </div>
-<app-pagination [totalItems]="data.length" [itemsPerPage]="3" [currentPage]="3" (onClick)="onClickPage($event)"></app-pagination>
+<app-expenses-table [expenses]="data"></app-expenses-table>
+
 
 
 

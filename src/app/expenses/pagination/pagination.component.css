@@ -1,0 +1,19 @@
+.pagination {
+    background-color: transparent;
+  }
+  
+  .page-item .page-link {
+    background-color: transparent;
+    color: white;
+  }
+  
+  .page-item.active .page-link {
+    background-color: rgba(255, 255, 255, 0.2); /* subtle highlight for active */
+    color: white;
+  }
+  
+  .page-item.disabled .page-link {
+    color: rgba(255, 255, 255, 0.5); /* dimmed for disabled */
+    pointer-events: none;
+    background-color: transparent;
+  }
