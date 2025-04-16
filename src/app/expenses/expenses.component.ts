@@ -29,7 +29,7 @@ throw new Error('Method not implemented.');
     this.http.get<any>('/api/expenses').subscribe({
       next: (data: any) => {
         console.log(data);
-        this.data = data.data;
+        this.data = data.data.content;
       }, error: (err) => console.log(err)
     });
   }

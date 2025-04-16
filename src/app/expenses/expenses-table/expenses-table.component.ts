@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, computed, input } from '@angular/core';
 import { Expense } from '../interface/expense';
 import { PaginationComponent } from '../pagination/pagination.component';
 import { ExpenseItemComponent } from '../expense-item/expense-item.component';
@@ -13,8 +13,17 @@ import { ExpenseItemComponent } from '../expense-item/expense-item.component';
 export class ExpensesTableComponent {
 
   expenses = input<Expense[]>([]);
+  itemsPerPage:number = 50;
+  currentPage:number = 1;
 
-  onClickPage($event: number) {
-    throw new Error('Method not implemented.');
+  get paginatedExpenses(){
+    const start = (this.currentPage -1) * (this.itemsPerPage)
+    const end = start + this.itemsPerPage;
+
+    return computed(() => this.expenses().slice(start, end)) ;    
+  }
+
+  onClickPage(page: number) {
+    this.currentPage=page;
   }
 }

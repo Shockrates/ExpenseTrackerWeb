@@ -30,7 +30,10 @@ constructor(){
 }
 
 pageClicked(page:number) {
-  this.onClick.emit(page);
+  if (page <= this.totalPages) {
+    this.onClick.emit(page);
+  }
+ 
 }
 
 
