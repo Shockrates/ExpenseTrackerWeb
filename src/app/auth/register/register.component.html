@@ -6,25 +6,42 @@
             <div class="card-body p-5 text-center">
   
               <div class="mb-md-5 mt-md-4 pb-5">
-                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
-                  <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
-                  <p class="text-white-50 mb-5">Please enter your login and password!</p>
-    
+                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate>
+                  <h2 class="fw-bold mb-2 text-uppercase">Register</h2>
+                  <p class="text-white-50 mb-5">Please create a new Username and Password!</p>
+                    
+                  <div class="form-outline form-white mb-4">
+                    <input 
+                      type="text" 
+                      id="typeNameX" 
+                      class="form-control form-control-lg" 
+                      formControlName="name"
+                      [ngClass]="{ 'is-invalid': registerForm.get('email')?.touched && registerForm.get('email')?.invalid }"
+                    />
+                    <label class="form-label" for="typeNameX">Usename</label>
+                    @if (registerForm.get('name')?.touched && registerForm.get('name')?.errors) {
+                      <div class="invalid-feedback">
+                        @if (registerForm.get('name')?.errors?.['required']) {
+                        <div>Name is required!</div>
+                        }
+                      </div>
+                      }
+                  </div>
                   <div class="form-outline form-white mb-4">
                     <input 
                       type="email" 
                       id="typeEmailX" 
                       class="form-control form-control-lg" 
                       formControlName="email"
-                      [ngClass]="{ 'is-invalid': loginForm.get('email')?.touched && loginForm.get('email')?.invalid }"
+                      [ngClass]="{ 'is-invalid': registerForm.get('email')?.touched && registerForm.get('email')?.invalid }"
                     />
                     <label class="form-label" for="typeEmailX">Email</label>
-                    @if (loginForm.get('email')?.touched && loginForm.get('email')?.errors) {
+                    @if (registerForm.get('email')?.touched && registerForm.get('email')?.errors) {
                       <div class="invalid-feedback">
-                        @if (loginForm.get('email')?.errors?.['required']) {
+                        @if (registerForm.get('email')?.errors?.['required']) {
                         <div>Email is required!</div>
                         }
-                        @if (loginForm.get('email')?.errors?.['email']) {
+                        @if (registerForm.get('email')?.errors?.['email']) {
                         <div>Invalid email address!</div>
                         }
                       </div>
@@ -37,15 +54,15 @@
                       id="password" 
                       class="form-control form-control-lg" 
                       formControlName="password"
-                      [ngClass]="{ 'is-invalid': loginForm.get('password')?.touched && loginForm.get('password')?.invalid }"
+                      [ngClass]="{ 'is-invalid': registerForm.get('password')?.touched && registerForm.get('password')?.invalid }"
                     />
                     <label class="form-label" for="password">Password</label>
-                    @if (loginForm.get('password')?.touched && loginForm.get('password')?.errors) {
+                    @if (registerForm.get('password')?.touched && registerForm.get('password')?.errors) {
                       <div class="invalid-feedback">
-                        @if (loginForm.get('password')?.errors?.['required']) {
+                        @if (registerForm.get('password')?.errors?.['required']) {
                         <div>Password is required</div>
                         }
-                        @if (loginForm.get('password')?.errors?.['minlength']) {
+                        @if (registerForm.get('password')?.errors?.['minlength']) {
                         <div>Password must be at least 6 characters</div>
                         }
                       </div>
@@ -54,13 +71,13 @@
     
                   <!-- <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p> -->
                   <div class="form-group">
-                    <button data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
+                    <button data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-light btn-lg px-5" type="submit">register</button>
                   </div>
                   
-                  <div class="form-group mt-2">
-                    @if (isLoginFailed) {
+                  <div class="form-group">
+                    @if (isRegisterFailed) {
                     <div class="alert alert-danger" role="alert">
-                      Login failed: {{ errorMessage }}
+                      register failed: {{ errorMessage }}
                     </div>
                     }
                   </div>
@@ -75,7 +92,7 @@
               </div>
   
               <div>
-                <p class="mb-0">Don't have an account? <a href="#!" class="text-white-50 fw-bold">Sign Up</a>
+                <p class="mb-0">Do you have an account? <a href="#!" class="text-white-50 fw-bold">Log In</a>
                 </p>
               </div>
   

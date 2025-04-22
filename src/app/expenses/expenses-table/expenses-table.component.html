@@ -8,7 +8,7 @@
     <div class="table-section-body">
         @for (expense of paginatedExpenses(); track expense.expenseId; let idx = $index){
             <div class="table-items-container">
-                <app-expense-item [expense]="expense" [idx]="(itemsPerPage*(currentPage-1))+idx+1"></app-expense-item>
+                <app-expense-item [expense]="expense" [idx]="(itemsPerPage()*(currentPage()-1))+idx+1"></app-expense-item>
             </div>
            
         }
@@ -41,4 +41,4 @@
       </tbody>
 </table> -->
 
-<app-pagination [totalItems]="expenses().length" [itemsPerPage]="itemsPerPage" [currentPage]="currentPage" (onClick)="onClickPage($event)"></app-pagination>
+<app-pagination [totalItems]="expenses().length" [itemsPerPage]="itemsPerPage()" [currentPage]="currentPage()" (onClick)="onClickPage($event)"></app-pagination>

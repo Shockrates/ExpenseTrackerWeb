@@ -14,10 +14,6 @@ import { Login } from '../interface/login';
 })
 export class LoginComponent implements OnInit{
 
-  form: any = {
-    username: null,
-    password: null
-  };
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
@@ -35,9 +31,9 @@ export class LoginComponent implements OnInit{
   constructor(){}
 
   ngOnInit(): void {
-    if (this.isLoggedIn) {
-      this.router.navigate(['/expenses']); 
-    }
+    // if (this.isLoggedIn) {
+    //   this.router.navigate(['/expenses']); 
+    // }
   }
 
   
@@ -61,10 +57,7 @@ export class LoginComponent implements OnInit{
     });
   }
 
-  reloadPage(): void {
-    window.location.reload();
-  }
-
+ 
   private mapFormToLogin(): Login {
     const { email, password } = this.loginForm.value;
     return {

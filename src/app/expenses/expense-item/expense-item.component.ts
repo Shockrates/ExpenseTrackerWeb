@@ -13,6 +13,6 @@ export class ExpenseItemComponent {
 
   expense = input<Expense>();
   idx = input<number>(0);
-
+  
 
 }

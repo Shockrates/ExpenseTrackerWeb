@@ -3,6 +3,9 @@ import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { Login } from '../auth/interface/login';
 import { jwtDecode } from "jwt-decode";
+import { LoginResponse } from '../auth/interface/login-response';
+import { ApiResponse } from '../shared/interface/api-response';
+import { Register } from '../auth/interface/register';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +14,10 @@ export class AuthService {
 
   private readonly JWT_TOKEN = "JWT_TOKEN";
   private readonly LOGIN_URL = 'api/auth/login';
+  private readonly REGISTER_URL = 'api/auth/register';
   private readonly REFRESH_URL = '';
   private loggedUser?: string;
-  private loggedId?: number
+  private loggedId?: number;
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
 
   private http = inject(HttpClient);
@@ -21,16 +25,20 @@ export class AuthService {
 
   constructor() { }
 
-  login(user:Login):Observable<any> {
-    return this.http.post(this.LOGIN_URL ,user)
+  login(user:Login):Observable<ApiResponse<LoginResponse>> {
+    return this.http.post<ApiResponse<LoginResponse>>(this.LOGIN_URL ,user)
       .pipe(
-        tap((response:any)=> {
+        tap((response:ApiResponse<LoginResponse>)=> {
           if (response && response.data) {
-            this.doLoginUser(user.userEmail, response.data.token, response.data.id)
+            this.doLoginUser(response.data.userEmail, response.data.token, response.data.id)
           }
           
         })
       )
+  }
+
+  register(user:Register):any{
+    return this.http.post(this.REGISTER_URL ,user)
   }
 
   private doLoginUser(username: string, token: any, id:number): void {

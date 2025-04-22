@@ -1,7 +1,8 @@
-import { Component, computed, input } from '@angular/core';
+import { Component, computed, inject, input, signal } from '@angular/core';
 import { Expense } from '../interface/expense';
 import { PaginationComponent } from '../pagination/pagination.component';
 import { ExpenseItemComponent } from '../expense-item/expense-item.component';
+import { ExpenseService } from '../../service/expense.service';
 
 @Component({
   selector: 'app-expenses-table',
@@ -12,18 +13,39 @@ import { ExpenseItemComponent } from '../expense-item/expense-item.component';
 })
 export class ExpensesTableComponent {
 
+  //Signal Implementation
   expenses = input<Expense[]>([]);
-  itemsPerPage:number = 50;
-  currentPage:number = 1;
+  //State Implementation
+  private expenseService = inject(ExpenseService);
+  expensesState = this.expenseService.expensesState;
 
-  get paginatedExpenses(){
-    const start = (this.currentPage -1) * (this.itemsPerPage)
-    const end = start + this.itemsPerPage;
-
-    return computed(() => this.expenses().slice(start, end)) ;    
+  
+  ngOnInit(): void {
+    console.log(this.expensesState().appData?.data);
+    
   }
+
+
+  itemsPerPage = signal<number>(5);
+  currentPage = signal<number>(1);
+  
+
+
+  paginatedExpenses= computed(() => {
+    const start = (this.currentPage() -1) * (this.itemsPerPage())
+    const end = start + this.itemsPerPage();
+    console.log(this.expenses());
+    //console.log(this.expenses().slice(start, end));
+    
+    return  this.expenses().slice(start, end);
+  }) ;    
+
 
   onClickPage(page: number) {
-    this.currentPage=page;
+    this.currentPage.set(page)
+    //this.currentPage=page
   }
+
 }
+
+

@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { ExpensesComponent } from './expenses/expenses.component';
 import { AuthService } from './service/auth.service';
 import { ModalComponent } from './shared/components/modal/modal.component';
@@ -15,25 +15,35 @@ export class AppComponent {
   title = 'ExpenseTrackerWeb';
 
   authService = inject(AuthService);
+  router = inject(Router);
   user: any;
 
   constructor(){
     this.user = this.authService.getDecodedToken();
     console.log(this.user);
+
     
-    this.authService.login({
-        userEmail:"Tester@example.com",
-        userPassword:"test1234"
-    }).subscribe((resp)=> {
-      //console.log(resp);
-      this.authService.getCurrentAuthUser().subscribe((r) =>{
-        //console.log(r);
-      })
-    })
+    // this.authService.login({
+    //     userEmail:"Tester@example.com",
+    //     userPassword:"test1234"
+    // }).subscribe((resp)=> {
+    //   //console.log(resp);
+    //   this.authService.getCurrentAuthUser().subscribe((r) =>{
+    //     //console.log(r);
+    //   })
+    // })
     
   }
 
   onLogout(): void {
     this.authService.logout();
+    this.router.navigate(['/login']);
   }
+  onLogin():void {
+    this.router.navigate(['/login']);
+  }
+  onRegister():void {
+    this.router.navigate(['/register']);
+  }
+
 }

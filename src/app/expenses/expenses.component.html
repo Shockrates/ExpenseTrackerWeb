@@ -1,7 +1,32 @@
-<div class="col-md-12">
+<div class="col-md-12" style="color: white;">
+   
     <p>expenses works!</p>
 </div>
-<app-expenses-table [expenses]="data"></app-expenses-table>
+@if (expensesState(); as state) {
+    @switch (state.appState ) {
+        @case ("APP_LOADING") {
+            <div class="text-center">
+                <div class="spinner-border text-info" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>
+        }
+        @case ("APP_ERROR") {
+            <p style="color: white;">
+                {{ state.error?.message| json}}  
+            </p>
+            
+         
+        }
+        @default {
+            <app-expenses-table [expenses]="state.appData!.data.content"></app-expenses-table>
+        }
+      }
+}
+
+<!-- <app-expenses-table [expenses]="data"></app-expenses-table> -->
+
+
 
 
 

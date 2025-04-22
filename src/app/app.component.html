@@ -1,6 +1,22 @@
 <div class="navbar">
-  <button>Login</button>
-  <button>Register</button>
+  @if (authService.isLoggedIn()) {
+    <button (click)="onLogout()">
+      Logout
+    </button>
+  } @else 
+  {
+    
+    <a  class="btn m-1" (click)="onLogin()">
+      Login
+    </a>
+    <a  class="btn m-1" (click)="onRegister()">
+      Register
+    </a>
+    <!-- <button>Login</button>
+    <button>Register</button> -->
+  }
+
+  
 </div>
 
   <div class="sidebar"></div>
